@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" style="width: 163px;" src="logo.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Open-CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.7.18</span>
+   &#160;<span id="projectnumber">Version 1.7.20</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -210,7 +210,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td><a class="el" href="pdsc_boards_pg.html#element_board_image">image</a> </td><td>Carries pictures of the boards to be displayed on web pages. Directory and file names are case-sensitive. </td><td>ComplexType </td><td>0..1  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_boards_pg.html#element_board_debugInterface">debugInterface</a> </td><td>Describes the debug interface of the development board. </td><td>DebugInterfaceType </td><td>1..*   </td></tr>
+<td><a class="el" href="pdsc_boards_pg.html#element_board_debugInterface">debugInterface</a> </td><td>Describes the debug interface of the development board. The expectation is that boards provides a hardware connector to attach external debug adapters and/or on-board debug adapters, unless the board has device = "NO_MCU" or represents virtual hardware. </td><td>DebugInterfaceType </td><td>0..*   </td></tr>
 <tr>
 <td><a class="el" href="pdsc_boards_pg.html#element_board_book">book</a> </td><td>Describes the documentation files (user manuals, schematics, etc.). Directory and file names are case-sensitive. </td><td>BoardsBookType </td><td>1..*   </td></tr>
 <tr>
@@ -239,9 +239,9 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <tr>
 <td>type </td><td>Defines board features. Select predefined values from the table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a>. </td><td>BoardFeatureTypeEnum </td><td>required  </td></tr>
 <tr>
-<td>n </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:decimal </td><td>optional  </td></tr>
+<td>n </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>m </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:decimal </td><td>optional  </td></tr>
+<td>m </td><td>Depends on attribute <em><b>type</b>.</em> Check table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Features</a> for details. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
 <td>name </td><td>Descriptive name of the feature. If omitted, a <b>Default Name</b> is used (refer to table <a class="el" href="pdsc_boards_pg.html#BoardFeatureTypeEnum">Board Feature Types</a>). <b>Do not repeat</b> the <span class="XML-Token">n</span> or <span class="XML-Token">m</span> values in the name. This will lead to duplicate entries on web sites (they show <span class="XML-Token">n</span> x <span class="XML-Token">name</span>). </td><td>xs:string </td><td>optional  </td></tr>
 </table>
@@ -483,7 +483,7 @@ $(document).ready(function(){initNavTree('pdsc_boards_pg.html',''); initResizabl
 <hr  />
 <h1><a class="anchor" id="element_board_debugInterface"></a>
 /package/boards/board/debugInterface</h1>
-<p >This element describes the debug interface of a board. At least debug interface must be specified.</p>
+<p >This element describes the debug interface of a board. All available debug interfaces specifying on-board adapters as well as hardware connectors for external debug adapter should be listed here. If a board has no device mounted or if the board describes virtual hardware there maybe no debug entries listed.</p>
 <p ><b>Example</b> </p><div class="fragment"><div class="line">&lt;debugInterface adapter=<span class="stringliteral">&quot;JTAG/SW&quot;</span> connector=<span class="stringliteral">&quot;20-pin Arm Standard JTAG Connector (0.1 inch connector)&quot;</span>/&gt;</div>
 <div class="line">&lt;debugInterface adapter=<span class="stringliteral">&quot;JTAG/SW&quot;</span> connector=<span class="stringliteral">&quot;10-pin Cortex Debug Connector (0.05 inch connector)&quot;</span>/&gt;</div>
 <div class="line">&lt;debugInterface adapter=<span class="stringliteral">&quot;JTAG/SW&quot;</span> connector=<span class="stringliteral">&quot;20-pin Cortex Debug + ETM Connector (0.05 inch connector)&quot;</span>/&gt;</div>
